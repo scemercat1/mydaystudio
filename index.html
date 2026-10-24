@@ -3,8 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Day Studio</title>
-<meta name="description" content="My Day Studio makes My Day, a daily planner with research, weather, focus timer, goals, mood check-ins, badges and a free chat room.">
+<title>My Day Studio - Plan your day, keep your focus</title>
+<meta name="description" content="My Day Studio makes My Day, a daily planner with daily research, weather and climate, a focus timer, goals, mood check-ins, a word game, badges and a free chat room. Chrome extension and Windows app.">
+<meta name="theme-color" content="#0f0c29">
+<meta property="og:title" content="My Day Studio">
+<meta property="og:description" content="A daily planner with research, weather, focus timer, goals, mood check-ins, badges and a free chat room.">
+<meta property="og:type" content="website">
 <style>
   :root {
     --bg1: #0f0c29;
@@ -12,30 +16,34 @@
     --bg3: #24243e;
     --accent: #f472b6;
     --accent2: #818cf8;
+    --gold: #fbbf24;
     --text: #f8fafc;
     --muted: #94a3b8;
     --card: rgba(255, 255, 255, 0.06);
     --border: rgba(255, 255, 255, 0.12);
   }
   * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
   body {
+    margin: 0;
     font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
     color: var(--text);
-    background: linear-gradient(160deg, var(--bg1), var(--bg2) 55%, var(--bg3));
-    min-height: 100vh;
     line-height: 1.6;
+    min-height: 100vh;
+    background: linear-gradient(160deg, var(--bg1), var(--bg2) 55%, var(--bg3));
+    background-attachment: fixed;
   }
+  a { color: var(--accent2); }
   header {
     position: sticky;
     top: 0;
-    z-index: 10;
-    backdrop-filter: blur(10px);
-    background: rgba(15, 12, 41, 0.7);
+    z-index: 20;
+    backdrop-filter: blur(12px);
+    background: rgba(15, 12, 41, 0.75);
     border-bottom: 1px solid var(--border);
   }
   .bar {
-    max-width: 1100px;
+    max-width: 1140px;
     margin: 0 auto;
     padding: 14px 24px;
     display: flex;
@@ -44,56 +52,25 @@
     gap: 16px;
     flex-wrap: wrap;
   }
-  .brand { font-weight: 800; font-size: 20px; text-decoration: none; color: var(--text); }
+  .brand { font-weight: 800; font-size: 20px; text-decoration: none; color: var(--text); letter-spacing: 0.2px; }
   .brand span { color: var(--accent); }
   nav a {
     color: var(--muted);
     text-decoration: none;
-    margin-left: 20px;
+    margin-left: 22px;
     font-weight: 600;
     padding: 6px 2px;
     border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
   }
   nav a:hover, nav a.active { color: var(--text); border-bottom-color: var(--accent); }
-  main { max-width: 1100px; margin: 0 auto; padding: 56px 24px 80px; }
-  .page { display: none; animation: fade 0.5s ease both; }
-  .page.active { display: block; }
-  @keyframes fade { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
-  h1 { font-size: clamp(34px, 5vw, 56px); margin: 0 0 16px; line-height: 1.1; }
-  h2 { font-size: 26px; margin: 48px 0 16px; }
-  h3 { font-size: 18px; margin: 0 0 8px; color: var(--accent); }
-  p { color: var(--muted); margin: 0 0 16px; font-size: 17px; }
-  .lead { font-size: 20px; color: var(--text); opacity: 0.9; max-width: 720px; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 24px; }
-  .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 20px;
-    transition: transform 0.2s, border-color 0.2s;
-  }
-  .card:hover { transform: translateY(-3px); border-color: rgba(244, 114, 182, 0.5); }
-  .card p { margin: 0; font-size: 15px; }
-  .btn {
-    display: inline-block;
-    margin: 6px 10px 6px 0;
-    padding: 12px 22px;
-    border-radius: 12px;
-    font-weight: 700;
-    text-decoration: none;
-    color: #fff;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    box-shadow: 0 8px 20px rgba(244, 114, 182, 0.3);
-    transition: transform 0.2s;
-  }
-  .btn:hover { transform: translateY(-2px); }
-  .btn.ghost {
-    background: var(--card);
-    border: 1px solid var(--border);
-    box-shadow: none;
-  }
-  .hero-actions { margin-top: 24px; }
-  .pill {
+  main { max-width: 1140px; margin: 0 auto; padding: 0 24px 96px; }
+  .page { display: none; }
+  .page.active { display: block; animation: rise 0.6s ease both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  .hero { padding: 84px 0 40px; text-align: center; }
+  .hero.left { text-align: left; }
+  .eyebrow {
     display: inline-block;
     padding: 6px 14px;
     border-radius: 999px;
@@ -101,10 +78,96 @@
     border: 1px solid var(--border);
     color: var(--muted);
     font-size: 14px;
-    margin: 0 8px 8px 0;
+    margin-bottom: 18px;
   }
-  ul { color: var(--muted); padding-left: 20px; margin: 0 0 16px; }
-  li { margin-bottom: 8px; font-size: 16px; }
+  h1 { font-size: clamp(38px, 6vw, 68px); line-height: 1.05; margin: 0 0 18px; letter-spacing: -0.5px; }
+  h1 .grad {
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  h2 { font-size: clamp(26px, 3.5vw, 36px); margin: 0 0 12px; }
+  h3 { font-size: 18px; margin: 0 0 8px; color: var(--accent); }
+  p { color: var(--muted); margin: 0 0 16px; font-size: 17px; }
+  .lead { font-size: 20px; color: var(--text); opacity: 0.92; max-width: 720px; margin: 0 auto; }
+  .hero.left .lead { margin: 0; }
+  section.block { padding: 64px 0; border-top: 1px solid var(--border); }
+  .center { text-align: center; }
+  .sub { max-width: 640px; margin: 0 auto 36px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 24px;
+    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(244, 114, 182, 0.5);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
+  }
+  .card p { margin: 0; font-size: 15px; }
+  .icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    font-size: 22px;
+    margin-bottom: 14px;
+    background: linear-gradient(135deg, rgba(244, 114, 182, 0.25), rgba(129, 140, 248, 0.25));
+    border: 1px solid var(--border);
+  }
+  .steps { display: grid; gap: 14px; }
+  .step {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 18px 20px;
+  }
+  .step .num {
+    flex: 0 0 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff;
+  }
+  .step p { margin: 0; font-size: 16px; }
+  .btn {
+    display: inline-block;
+    margin: 6px 10px 6px 0;
+    padding: 13px 24px;
+    border-radius: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    box-shadow: 0 10px 24px rgba(244, 114, 182, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(244, 114, 182, 0.4); }
+  .btn.ghost { background: var(--card); border: 1px solid var(--border); box-shadow: none; }
+  .actions { margin-top: 26px; }
+  .center .actions { display: flex; justify-content: center; flex-wrap: wrap; }
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; }
+  .tile {
+    text-align: center;
+    padding: 22px 14px;
+    border-radius: 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+  }
+  .tile b { display: block; font-size: 28px; color: var(--gold); }
+  .tile span { color: var(--muted); font-size: 14px; }
   details {
     background: var(--card);
     border: 1px solid var(--border);
@@ -117,25 +180,36 @@
   .note {
     border-left: 3px solid var(--accent2);
     background: var(--card);
-    padding: 16px 20px;
-    border-radius: 0 12px 12px 0;
-    margin: 24px 0;
+    padding: 18px 22px;
+    border-radius: 0 14px 14px 0;
+    margin: 28px 0;
   }
-  a { color: var(--accent2); }
+  .note p { margin: 0; color: var(--text); }
   footer {
     border-top: 1px solid var(--border);
-    text-align: center;
-    padding: 24px;
+    padding: 40px 24px;
     color: var(--muted);
     font-size: 14px;
   }
-  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { animation: none !important; transition: none !important; }
+  .foot {
+    max-width: 1140px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
   }
-  @media (max-width: 640px) {
+  .foot nav a { margin-left: 16px; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+  @media (max-width: 760px) {
+    .split { grid-template-columns: 1fr; }
     nav a { margin-left: 14px; }
-    h2 { font-size: 22px; }
+    .hero { padding-top: 56px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
   }
 </style>
 </head>
@@ -155,132 +229,246 @@
 <main>
 
   <section id="home" class="page">
-    <h1>Plan your day.<br>Keep your focus.</h1>
-    <p class="lead">My Day Studio builds small, friendly tools that help you start the day, stay focused, and track what matters. Our flagship product, My Day, is a daily planner that comes as a Chrome extension and as a Windows app.</p>
-    <div class="hero-actions">
-      <a class="btn" href="#extension">Get the Chrome extension</a>
-      <a class="btn ghost" href="#" data-store="windows">Get the Windows app</a>
-    </div>
 
-    <h2>What is My Day?</h2>
-    <p>One place for the things you check every morning and the habits you want to keep. Open it, see your day, and get going.</p>
-    <div class="grid">
-      <div class="card"><h3>Daily research</h3><p>A word of the day, a Bible verse, a quote, a top Reddit post and a fun fact, every day.</p></div>
-      <div class="card"><h3>Weather and climate</h3><p>Check any city, see the last year of climate, and get a quick tip on what to wear.</p></div>
-      <div class="card"><h3>Focus timer</h3><p>25 or 50 minute sessions that keep running even if you close the popup.</p></div>
-      <div class="card"><h3>Goals and mood</h3><p>A simple to-do list, plus a daily mood check-in with a seven-day view.</p></div>
-      <div class="card"><h3>Streaks and badges</h3><p>Open the app every day to build a streak. Unlock badges as you go, from Common to Legendary.</p></div>
-      <div class="card"><h3>Free chat room</h3><p>A friendly room where you can read what was said yesterday, with profiles and a leaderboard.</p></div>
-    </div>
-
-    <h2>Two ways to use it</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Chrome extension</h3>
-        <p>Opens as a popup in your browser. Light, quick, and always one click away.</p>
-        <p><a href="#extension">See the extension page →</a></p>
-      </div>
-      <div class="card">
-        <h3>Windows app</h3>
-        <p>A full desktop version with the same features, built for Windows and tested with Narrator and JAWS. Available in English and Romanian.</p>
-        <p><a href="#" data-store="windows">Get it from the Microsoft Store →</a></p>
+    <div class="hero">
+      <span class="eyebrow">Made by It'sCHAOS</span>
+      <h1>Plan your day.<br><span class="grad">Keep your focus.</span></h1>
+      <p class="lead">My Day Studio builds small, friendly tools that help you start the day, stay focused and track what matters. Our flagship product, My Day, is a daily planner for your browser and for Windows.</p>
+      <div class="actions">
+        <a class="btn" href="#extension">Get the Chrome extension</a>
+        <a class="btn ghost" href="#" data-store="windows">Get the Windows app</a>
       </div>
     </div>
 
-    <h2>Accessible by design</h2>
-    <p>My Day works with keyboards and screen readers. The Windows app is built for Narrator and JAWS, and it's available in English and Romanian.</p>
+    <section class="block">
+      <div class="tiles">
+        <div class="tile"><b>25</b><span>badges to unlock</span></div>
+        <div class="tile"><b>8</b><span>tabs in one popup</span></div>
+        <div class="tile"><b>2</b><span>languages in the Windows app</span></div>
+        <div class="tile"><b>0</b><span>ads, ever</span></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="center sub">
+        <h2>Everything your day needs</h2>
+        <p>One place for the things you check every morning and the habits you want to keep.</p>
+      </div>
+      <div class="grid">
+        <div class="card"><div class="icon">📖</div><h3>Daily research</h3><p>A word of the day, a Bible verse, a quote, a top Reddit post and a fun fact, every day.</p></div>
+        <div class="card"><div class="icon">⛅</div><h3>Weather and climate</h3><p>Check any city, see the last year of climate, and get a quick tip on what to wear.</p></div>
+        <div class="card"><div class="icon">🍅</div><h3>Focus timer</h3><p>25 or 50 minute sessions that keep running even if you close the popup.</p></div>
+        <div class="card"><div class="icon">✅</div><h3>Goals</h3><p>A simple list you can tick off, with a count of what you've finished.</p></div>
+        <div class="card"><div class="icon">🎭</div><h3>Mood check-ins</h3><p>Log how you feel each day and look back over the last seven days.</p></div>
+        <div class="card"><div class="icon">🔥</div><h3>Streaks and badges</h3><p>Open the app every day to build a streak. Unlock badges from Common to Legendary.</p></div>
+        <div class="card"><div class="icon">💬</div><h3>Free chat room</h3><p>A friendly room where you can read what was said yesterday, with profiles and a leaderboard.</p></div>
+        <div class="card"><div class="icon">🧩</div><h3>Word game</h3><p>Unscramble the letters and build your streak. Three in a row unlocks the moderator step.</p></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="split">
+        <div>
+          <h2>How it works</h2>
+          <p>Get started in less than a minute.</p>
+        </div>
+        <div class="steps">
+          <div class="step"><span class="num">1</span><p>Install the Chrome extension or the Windows app.</p></div>
+          <div class="step"><span class="num">2</span><p>Open it each morning to see your research, weather and goals.</p></div>
+          <div class="step"><span class="num">3</span><p>Start a focus session, tick off your goals and log your mood.</p></div>
+          <div class="step"><span class="num">4</span><p>Keep your streak going and unlock badges as you go.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="center sub">
+        <h2>Two ways to use it</h2>
+        <p>The same planner, wherever you work.</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="icon">🧭</div>
+          <h3>Chrome extension</h3>
+          <p>A popup in your browser toolbar. Light, quick and always one click away.</p>
+          <p class="actions" style="margin-top:14px"><a class="btn ghost" href="#extension">See the extension</a></p>
+        </div>
+        <div class="card">
+          <div class="icon">🪟</div>
+          <h3>Windows app</h3>
+          <p>A full desktop version with the same features. Built for Narrator and JAWS, and available in English and Romanian.</p>
+          <p class="actions" style="margin-top:14px"><a class="btn ghost" href="#" data-store="windows">Get it from the Microsoft Store</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="center sub">
+        <h2>Accessible by design</h2>
+        <p>My Day is built to work with keyboards and screen readers. The Windows app is tested with Narrator and JAWS, and it's available in English and Romanian.</p>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="center sub">
+        <h2>Your privacy comes first</h2>
+        <p>We don't sell your data and we don't show ads. Your progress belongs to you, and you can delete it at any time.</p>
+      </div>
+      <div class="center actions">
+        <a class="btn ghost" href="#" data-privacy>Read the privacy policy</a>
+        <a class="btn ghost" href="#support">Get support</a>
+      </div>
+    </section>
+
   </section>
 
   <section id="extension" class="page">
-    <h1>My Day for Chrome</h1>
-    <p class="lead">A daily planner in your browser toolbar. Click the icon and your day is there: research, weather, focus, goals, mood, a word game, a chat room and badges.</p>
-    <div class="hero-actions">
-      <a class="btn" href="#" data-store="chrome">Add to Chrome</a>
-      <a class="btn ghost" href="#support">Need help?</a>
+
+    <div class="hero left">
+      <span class="eyebrow">Chrome extension</span>
+      <h1>My Day, in your<br><span class="grad">browser toolbar.</span></h1>
+      <p class="lead">Click the icon and your day is there: research, weather, focus, goals, mood, a word game, a chat room and badges.</p>
+      <div class="actions">
+        <a class="btn" href="#" data-store="chrome">Add to Chrome</a>
+        <a class="btn ghost" href="#support">Need help?</a>
+      </div>
     </div>
 
-    <h2>What's inside</h2>
-    <div class="grid">
-      <div class="card"><h3>Today</h3><p>Word of the day, Bible verse, quote, top Reddit post and fun fact, updated every day.</p></div>
-      <div class="card"><h3>Weather</h3><p>Current weather for any city, the past year of climate, and what to wear.</p></div>
-      <div class="card"><h3>Focus</h3><p>A 25 or 50 minute timer. It keeps counting while you work in other tabs.</p></div>
-      <div class="card"><h3>Goals</h3><p>Add goals, tick them off, and see how many you've finished.</p></div>
-      <div class="card"><h3>Mood</h3><p>Log how you feel each day and look back over the last seven days.</p></div>
-      <div class="card"><h3>Play</h3><p>A quick reaction test. Your best time is saved.</p></div>
-      <div class="card"><h3>Social</h3><p>A free chat room, a profile with a display name and avatar, and a leaderboard.</p></div>
-      <div class="card"><h3>Badges</h3><p>Twenty-five badges across weather, streaks, focus, goals, mood and chat.</p></div>
-    </div>
+    <section class="block">
+      <div class="center sub">
+        <h2>What's inside</h2>
+      </div>
+      <div class="grid">
+        <div class="card"><h3>Today</h3><p>Word of the day, Bible verse, quote, top Reddit post and fun fact, updated every day.</p></div>
+        <div class="card"><h3>Weather</h3><p>Current weather for any city, the past year of climate, and what to wear.</p></div>
+        <div class="card"><h3>Focus</h3><p>A 25 or 50 minute timer that keeps counting while you work in other tabs.</p></div>
+        <div class="card"><h3>Goals</h3><p>Add goals, tick them off, and see how many you've finished.</p></div>
+        <div class="card"><h3>Mood</h3><p>Log how you feel each day and look back over the last seven days.</p></div>
+        <div class="card"><h3>Play</h3><p>A quick reaction test. Your best time is saved.</p></div>
+        <div class="card"><h3>Social</h3><p>A free chat room, a profile with a display name and avatar, and a leaderboard.</p></div>
+        <div class="card"><h3>Badges</h3><p>Twenty-five badges across weather, streaks, focus, goals, mood and chat.</p></div>
+      </div>
+    </section>
 
-    <h2>How to install</h2>
-    <ul>
-      <li>Click <strong>Add to Chrome</strong> above, then click <strong>Add extension</strong>.</li>
-      <li>Click the puzzle icon in Chrome's toolbar and pin <strong>My Day</strong>.</li>
-      <li>Click the My Day icon to open it.</li>
-    </ul>
+    <section class="block">
+      <div class="split">
+        <div>
+          <h2>How to install</h2>
+          <p>It takes about a minute.</p>
+        </div>
+        <div class="steps">
+          <div class="step"><span class="num">1</span><p>Click <strong>Add to Chrome</strong>, then <strong>Add extension</strong>.</p></div>
+          <div class="step"><span class="num">2</span><p>Click the puzzle icon in Chrome's toolbar and pin <strong>My Day</strong>.</p></div>
+          <div class="step"><span class="num">3</span><p>Click the My Day icon to open your day.</p></div>
+        </div>
+      </div>
+    </section>
 
-    <h2>Accounts (optional)</h2>
-    <p>You can use My Day without an account. To chat, create a profile in the Social tab. To keep your progress and use it on another computer, create an account in the Profile section with a username and password. Your progress is saved with that account, and you can load it again on any device.</p>
+    <section class="block">
+      <div class="center sub">
+        <h2>Accounts (optional)</h2>
+        <p>You can use My Day without an account. To chat, create a profile in the Social tab. To keep your progress and use it on another computer, create an account in the Profile section with a username and password.</p>
+      </div>
+    </section>
 
-    <h2>Your privacy</h2>
-    <p>We don't sell your data or show ads. Read the full details in our <a href="#support">support page</a>, which links to the privacy policy.</p>
+    <section class="block">
+      <div class="center sub">
+        <h2>Your privacy</h2>
+        <p>We don't sell your data or show ads. Read the full details in our privacy policy.</p>
+      </div>
+      <div class="center actions">
+        <a class="btn ghost" href="#" data-privacy>Read the privacy policy</a>
+      </div>
+    </section>
+
   </section>
 
   <section id="support" class="page">
-    <h1>Support</h1>
-    <p class="lead">Questions, problems, or ideas? Start with the answers below. If you still need help, email us.</p>
-    <div class="hero-actions">
-      <a class="btn" href="mailto:YOUR-EMAIL@example.com">Email support</a>
+
+    <div class="hero left">
+      <span class="eyebrow">Support</span>
+      <h1>How can we<br><span class="grad">help?</span></h1>
+      <p class="lead">Start with the answers below. If you still need help, email us.</p>
+      <div class="actions">
+        <a class="btn" href="mailto:junethecat07@gmail.com">Email support</a>
+      </div>
     </div>
 
-    <h2>Frequently asked questions</h2>
-    <details>
-      <summary>My Day doesn't load the daily research.</summary>
-      <p>Some sources are free public services and can be slow or busy. Click <strong>Refresh</strong> on the Today tab. If one card still fails, it will try again the next time you open the app.</p>
-    </details>
-    <details>
-      <summary>The chat doesn't show new messages.</summary>
-      <p>The free room refreshes every few seconds while you're on the Social tab. Stay on the tab, or close and reopen the popup. Check your internet connection too.</p>
-    </details>
-    <details>
-      <summary>How do I create a profile?</summary>
-      <p>Open the Social tab, then Profile. Choose a username (private and permanent), a display name and an avatar, and click <strong>Create profile</strong>.</p>
-    </details>
-    <details>
-      <summary>How do I save my progress and use it on another computer?</summary>
-      <p>Create a profile first. Then, in the Profile section, enter a password under <strong>Save account</strong>. On the other computer, open the Profile section and use <strong>Load account</strong> with the same username and password. Loading replaces the progress on that computer.</p>
-    </details>
-    <details>
-      <summary>I forgot my password.</summary>
-      <p>Email us from the address you used for your account, along with your username, and we'll help you recover it. Please don't include your password in the email.</p>
-    </details>
-    <details>
-      <summary>How do I delete my data?</summary>
-      <p>Email us with your username and ask us to delete your account. We'll remove your account, saved progress, profile and leaderboard entry.</p>
-    </details>
-    <details>
-      <summary>The YouTube badge didn't unlock.</summary>
-      <p>The OHYOUTUBE badge unlocks in the Chrome extension when you open youtube.com while the extension is installed. Reload the YouTube page once and check the Badges tab.</p>
-    </details>
-    <details>
-      <summary>What is the mod code?</summary>
-      <p>Moderators can remove messages from the free room. Mod access is earned in the app by following the steps in the Focus tab. Please keep the chat friendly.</p>
-    </details>
+    <section class="block">
+      <div class="center sub">
+        <h2>Frequently asked questions</h2>
+      </div>
+      <details>
+        <summary>My Day doesn't load the daily research.</summary>
+        <p>Some sources are free public services and can be slow or busy. Click <strong>Refresh</strong> on the Today tab. If one card still fails, it will try again the next time you open the app.</p>
+      </details>
+      <details>
+        <summary>The chat doesn't show new messages.</summary>
+        <p>The free room refreshes every few seconds while you're on the Social tab. Stay on the tab, or close and reopen the popup. Check your internet connection too.</p>
+      </details>
+      <details>
+        <summary>How do I create a profile?</summary>
+        <p>Open the Social tab, then Profile. Choose a username (private and permanent), a display name and an avatar, and click <strong>Create profile</strong>.</p>
+      </details>
+      <details>
+        <summary>How do I save my progress and use it on another computer?</summary>
+        <p>Create a profile first. In the Profile section, enter a password under <strong>Save account</strong>. On the other computer, open the Profile section and use <strong>Load account</strong> with the same username and password. Loading replaces the progress on that computer.</p>
+      </details>
+      <details>
+        <summary>I forgot my password.</summary>
+        <p>Email us from the address you used for your account, along with your username, and we'll help you recover it. Please don't include your password in the email.</p>
+      </details>
+      <details>
+        <summary>How do I delete my data?</summary>
+        <p>Email us with your username and ask us to delete your account. We'll remove your account, saved progress, profile and leaderboard entry.</p>
+      </details>
+      <details>
+        <summary>The YouTube badge didn't unlock.</summary>
+        <p>The OHYOUTUBE badge unlocks in the Chrome extension when you open youtube.com while the extension is installed. Reload the YouTube page once and check the Badges tab.</p>
+      </details>
+      <details>
+        <summary>What is the mod code?</summary>
+        <p>Moderators can remove messages from the free room. Mod access is earned in the app by following the steps in the Focus tab. Please keep the chat friendly.</p>
+      </details>
+    </section>
 
-    <h2>Contact us</h2>
-    <p>Email <a href="mailto:YOUR-EMAIL@example.com">YOUR-EMAIL@example.com</a>. Include what you were doing, what you expected, and what happened. A screenshot helps.</p>
+    <section class="block">
+      <div class="center sub">
+        <h2>Contact us</h2>
+        <p>Email <a href="mailto:junethecat07@gmail.com">junethecat07@gmail.com</a>. Include what you were doing, what you expected, and what happened. A screenshot helps.</p>
+      </div>
+      <div class="center actions">
+        <a class="btn" href="mailto:junethecat07@gmail.com">Email support</a>
+      </div>
+    </section>
 
-    <h2>Privacy policy</h2>
-    <p>Read our privacy policy here: <a href="#" data-privacy>link to privacy policy</a>.</p>
+    <section class="block">
+      <div class="center sub">
+        <h2>Privacy policy</h2>
+        <p>Read our privacy policy to see what My Day collects and how it's used.</p>
+      </div>
+      <div class="center actions">
+        <a class="btn ghost" href="#" data-privacy>Read the privacy policy</a>
+      </div>
+      <div class="note">
+        <p>Please don't share your password with anyone, including support. We will never ask for it.</p>
+      </div>
+    </section>
 
-    <div class="note">
-      <p style="margin:0; color: var(--text);">Please don't share your password with anyone, including support. We will never ask for it.</p>
-    </div>
   </section>
 
 </main>
 
 <footer>
-  &copy; 2026 Chromatic Network. My Day is made by My Day Studio.
+  <div class="foot">
+    <div>&copy; 2026 It'sCHAOS. My Day is made by My Day Studio.</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#extension">Chrome extension</a>
+      <a href="#support">Support</a>
+      <a href="#" data-privacy>Privacy</a>
+    </nav>
+  </div>
 </footer>
 
 <script>
@@ -289,8 +477,8 @@
     const hash = location.hash.replace("#", "") || "home";
     const page = pages.includes(hash) ? hash : "home";
     document.querySelectorAll(".page").forEach(p => p.classList.toggle("active", p.id === page));
-    document.querySelectorAll("nav a").forEach(a => a.classList.toggle("active", a.dataset.page === page));
-    window.scrollTo(0, 0);
+    document.querySelectorAll("header nav a").forEach(a => a.classList.toggle("active", a.dataset.page === page));
+    window.scrollTo({ top: 0, behavior: "auto" });
   }
   window.addEventListener("hashchange", show);
   show();
@@ -298,11 +486,17 @@
   const links = {
     chrome: "#",
     windows: "#",
-    privacy: "#"
+    privacy: "https://myday.projectlemon.net/privacy.html"
   };
   document.querySelectorAll("[data-store]").forEach(a => {
-    a.href = links[a.dataset.store];
-    if (links[a.dataset.store] === "#") a.title = "Coming soon";
+    const target = links[a.dataset.store];
+    if (target === "#") {
+      a.href = "#";
+      a.title = "Coming soon";
+      a.addEventListener("click", e => { e.preventDefault(); a.textContent = "Coming soon"; });
+    } else {
+      a.href = target;
+    }
   });
   document.querySelectorAll("[data-privacy]").forEach(a => a.href = links.privacy);
 </script>

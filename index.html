@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Day: your day in the browser toolbar</title>
+  <meta name="description" content="My Day is a Chrome extension with research, weather, focus, goals, mood, a reaction game, a chat room and badges." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-orb orb-a" aria-hidden="true"></div>
+  <div class="bg-orb orb-b" aria-hidden="true"></div>
+  <div class="float float-1" aria-hidden="true">🎃</div>
+  <div class="float float-2" aria-hidden="true">🎃</div>
+  <div class="float float-3" aria-hidden="true">🐦‍⬛</div>
+
+  <header class="top reveal">
+    <a class="brand" href="#top"><span class="brand-dot"></span> My Day</a>
+    <nav>
+      <a href="#inside">What's inside</a>
+      <a href="#install">Install</a>
+      <a href="#accounts">Accounts</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow reveal">🎃 Halloween event is on</p>
+        <h1 class="reveal">My Day, in your <span class="grad">browser toolbar.</span></h1>
+        <p class="lead reveal">Click the icon and your day is there: research, weather, focus, goals, mood, a word game, a chat room and badges.</p>
+        <div class="cta reveal">
+          <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/my-day/fdlpppodmcgbpkmhoadccnalpcmoibci" target="_blank" rel="noopener">Add to Chrome</a>
+          <a class="btn btn-ghost" href="#install">Need help?</a>
+        </div>
+      </div>
+
+      <div class="mock reveal" aria-label="Preview of the My Day popup">
+        <div class="mock-top">
+          <span class="mock-hello">👋 Hello</span>
+          <span class="mock-streak">🔥 7</span>
+        </div>
+        <div class="mock-tabs">
+          <span class="on">🏠</span><span>⛅</span><span>🍅</span><span>✅</span><span>🎭</span><span>🎮</span><span>👥</span><span>🏅</span>
+        </div>
+        <div class="mock-card">
+          <p class="mock-kicker">Word of the day</p>
+          <p class="mock-text">Serendipity: finding something good without looking for it.</p>
+        </div>
+        <div class="mock-row">
+          <div class="ring">
+            <svg viewBox="0 0 120 120"><circle class="ring-bg" cx="60" cy="60" r="50" /><circle class="ring-fill" cx="60" cy="60" r="50" /></svg>
+            <span>25:00</span>
+          </div>
+          <div class="mock-stats">
+            <b>3</b><span>goals done</span>
+            <b>12</b><span>links opened</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="inside" class="section">
+      <h2 class="reveal">What's inside</h2>
+      <div class="grid">
+        <article class="feature reveal">
+          <span class="ico">🏠</span>
+          <h3>Today</h3>
+          <p>Word of the day, Bible verse, quote, top Reddit post and fun fact, updated every day.</p>
+        </article>
+        <article class="feature reveal">
+          <span class="ico">⛅</span>
+          <h3>Weather</h3>
+          <p>Current weather for any city, the past year of climate, and what to wear.</p>
+        </article>
+        <article class="feature reveal">
+          <span class="ico">🍅</span>
+          <h3>Focus</h3>
+          <p>A 25 or 50 minute timer that keeps counting while you work in other tabs.</p>
+        </article>
+        <article class="feature reveal">
+          <span class="ico">✅</span>
+          <h3>Goals</h3>
+          <p>Add goals, tick them off, and see how many you've finished.</p>
+        </article>
+        <article class="feature reveal">
+          <span class="ico">🎭</span>
+          <h3>Mood</h3>
+          <p>Log how you feel each day and look back over the last seven days.</p>
+        </article>
+        <article class="feature reveal">
+          <span class="ico">🎮</span>
+          <h3>Play</h3>
+          <p>A quick reaction test. Your best time is saved.</p>
+        </article>
+        <article class="feature reveal">
+          <span class="ico">👥</span>
+          <h3>Social</h3>
+          <p>A free chat room, a profile with a display name and avatar, and a leaderboard.</p>
+        </article>
+        <article class="feature reveal">
+          <span class="ico">🏅</span>
+          <h3>Badges</h3>
+          <p>Twenty-five badges across weather, streaks, focus, goals, mood and chat.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="install" class="section">
+      <h2 class="reveal">How to install</h2>
+      <p class="muted reveal">It takes about a minute.</p>
+      <ol class="steps">
+        <li class="reveal">
+          <span class="num">1</span>
+          <p>Click <b>Add to Chrome</b>, then <b>Add extension</b>.</p>
+        </li>
+        <li class="reveal">
+          <span class="num">2</span>
+          <p>Click the puzzle icon in Chrome's toolbar and pin My Day.</p>
+        </li>
+        <li class="reveal">
+          <span class="num">3</span>
+          <p>Click the My Day icon to open your day.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section id="accounts" class="section">
+      <div class="card reveal">
+        <h2>Accounts (optional)</h2>
+        <p>You can use My Day without an account. To chat, create a profile in the Social tab. To keep your progress and use it on another computer, create an account in the Profile section with a username and password.</p>
+      </div>
+      <div class="card reveal">
+        <h2>Your privacy</h2>
+        <p>We don't sell your data or show ads. Read the full details in our privacy policy.</p>
+        <a class="card-link" href="privacy.html">Read the privacy policy →</a>
+      </div>
+    </section>
+
+    <section class="closing reveal">
+      <h2>Your day, one click away.</h2>
+      <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/my-day/fdlpppodmcgbpkmhoadccnalpcmoibci" target="_blank" rel="noopener">Add to Chrome</a>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>My Day</span>
+    <a href="https://myday.projectlemon.net/" target="_blank" rel="noopener">Download the full app ↗</a>
+    <a href="privacy.html">Privacy</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

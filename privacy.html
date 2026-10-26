@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1ECMHPVDBG"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
+    });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1ECMHPVDBG"></script>
+  <script>
     gtag('js', new Date());
     gtag('config', 'G-1ECMHPVDBG');
   </script>
@@ -62,7 +69,7 @@
 
     <h2>Website analytics</h2>
     <p>This website uses Google Analytics to count visits and see which pages are read. It collects information such as the pages you view, how long you stay, your approximate location (country or region), your device and browser type, and the site that sent you here. It does not identify you personally, and it is not linked to your account in the extension.</p>
-    <p>Google Analytics sets cookies on this website. You can block them in your browser settings, or install Google's Analytics opt-out browser add-on. Google's privacy policy applies to the data it processes.</p>
+    <p>When you first visit this website, you can accept or decline analytics. Analytics stays off until you accept. If you accept, Google Analytics sets cookies on this website. You can change your choice by clearing this site's data in your browser, or block the cookies in your browser settings. You can also install Google's Analytics opt-out browser add-on. Google's privacy policy applies to the data it processes.</p>
     <p>The extension itself does not send analytics data.</p>
 
     <h2>Who receives requests</h2>
@@ -74,5 +81,7 @@
     <h2>Contact</h2>
     <p>Questions about this policy or your data: <a href="mailto:junethecat07@gmail.com">junethecat07@gmail.com</a>.</p>
   </main>
+
+  <script src="consent.js"></script>
 </body>
 </html>

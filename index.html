@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1ECMHPVDBG"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
+    });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1ECMHPVDBG"></script>
+  <script>
     gtag('js', new Date());
     gtag('config', 'G-1ECMHPVDBG');
   </script>
@@ -261,5 +268,6 @@
   </footer>
 
   <script src="script.js"></script>
+  <script src="consent.js"></script>
 </body>
 </html>

@@ -68,7 +68,7 @@ a { color: inherit; }
   100% { transform: translateX(calc(100vw + 60px)); }
 }
 
-body > *:not(.bg-orb):not(.float) { position: relative; z-index: 1; }
+body > *:not(.bg-orb):not(.float):not(.consent) { position: relative; z-index: 1; }
 
 /* ---------- header ---------- */
 .top {

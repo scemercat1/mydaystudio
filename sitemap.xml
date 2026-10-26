@@ -7,6 +7,7 @@
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://myday.projectlemon.net/icon.png</image:loc>
+      <image:title>My Day icon</image:title>
     </image:image>
   </url>
   <url>

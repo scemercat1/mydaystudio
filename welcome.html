@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
+    });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1ECMHPVDBG"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config', 'G-1ECMHPVDBG');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to My Day</title>
+  <meta name="description" content="Thanks for installing My Day. Pin it to your toolbar and open it to start your day." />
+  <link rel="canonical" href="https://myday.projectlemon.net/welcome.html" />
+  <link rel="icon" href="icon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .page { max-width: 720px; margin: 0 auto; padding: 40px 24px 60px; }
+    .page h1 { font-size: clamp(32px, 5.5vw, 46px); font-weight: 800; letter-spacing: -0.01em; margin-bottom: 10px; }
+    .page .intro { color: var(--muted); font-size: 18px; margin-bottom: 30px; }
+    .page h2 { font-size: 24px; font-weight: 800; margin: 0 0 16px; }
+    .page .steps { margin-bottom: 36px; }
+    .page .links { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+    .page .links a { color: var(--accent2); font-weight: 800; text-decoration: none; }
+    .page .links a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="bg-orb orb-a" aria-hidden="true"></div>
+  <div class="bg-orb orb-b" aria-hidden="true"></div>
+
+  <header class="top">
+    <a class="brand" href="index.html"><span class="brand-dot"></span> My Day</a>
+  </header>
+
+  <main class="page">
+    <h1>Thanks for installing My Day!</h1>
+    <p class="intro">Your day, one click away. My Day is free and has no ads. Here's how to get started.</p>
+
+    <h2>Get started</h2>
+    <ol class="steps">
+      <li>
+        <span class="num">1</span>
+        <p>Click <b>Add to Chrome</b>, then <b>Add extension</b>. You've already done this one.</p>
+      </li>
+      <li>
+        <span class="num">2</span>
+        <p>Click the puzzle icon in Chrome's toolbar and pin My Day.</p>
+      </li>
+      <li>
+        <span class="num">3</span>
+        <p>Click the My Day icon to open your day.</p>
+      </li>
+    </ol>
+
+    <div class="card">
+      <h2>Useful links</h2>
+      <ul class="links">
+        <li><a href="index.html">My Day website →</a></li>
+        <li><a href="https://chromewebstore.google.com/detail/my-day/fdlpppodmcgbpkmhoadccnalpcmoibci" target="_blank" rel="noopener">My Day on the Chrome Web Store ↗</a></li>
+        <li><a href="feedback.html">Send us feedback →</a></li>
+      </ul>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <span>My Day</span>
+    <a href="https://chromewebstore.google.com/detail/my-day/fdlpppodmcgbpkmhoadccnalpcmoibci" target="_blank" rel="noopener">Get it on Chrome Web Store ↗</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="index.html#support">Support</a>
+  </footer>
+
+  <script src="consent.js"></script>
+</body>
+</html>

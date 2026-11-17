@@ -346,6 +346,8 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 }
 .foot a { color: var(--muted); text-decoration: none; }
 .foot a:hover { color: var(--text); }
+.bmc-slot { display: inline-flex; align-items: center; }
+.card.bmc .bmc-slot { margin-top: 14px; }
 
 /* ---------- support: FAQ and contact ---------- */
 .faq { display: grid; gap: 10px; }
